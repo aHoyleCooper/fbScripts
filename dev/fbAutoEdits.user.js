@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Fogbugz
+// @name         fbAutoEdits
 // @author       Aaron C
 // @match        http://*/default.asp*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
