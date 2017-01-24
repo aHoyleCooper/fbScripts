@@ -10,4 +10,4 @@ Safari: http://tampermonkey.net/?browser=safari
 
 2. Install the script--visit: https://github.com/aHoyleCooper/fbScripts/raw/master/newFbTicketTemplate.user.js
 
-3. Done! To test, go to <a href='http://fogbugz/'>http://fogbugz/</a> and click 'New Case'
+3. Done! To test, go to <a href='http://fogbugz/' target='_blank'>http://fogbugz/</a> and click 'New Case'
