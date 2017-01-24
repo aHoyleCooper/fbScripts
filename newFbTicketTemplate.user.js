@@ -16,11 +16,10 @@ $(function(){
         $(".virtualLink")[0].click();
         setTimeout(function() {
             $('.wideTextareaWrapper textarea').val(template);
+            setTimeout(function() {
+                $(".virtualLink")[1].click();
+            }, 500);
         }, 500);
-        setTimeout(function() {
-            $(".virtualLink")[1].click();
-        }, 500);
-        // $(".virtualLink")[1].click();
     }
 
     $('#idBugTitleEdit').css("border", "solid 2px red");
