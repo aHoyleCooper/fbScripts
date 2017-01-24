@@ -1,7 +1,7 @@
 # fbScripts
 FogBugz Tampermonkey Scripts
 
-1. Download Tampermonkey
+1. Download Tampermonkey--
 Google Chrome: https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en
 Firefox: https://addons.mozilla.org/en-Us/firefox/addon/tampermonkey/
 
