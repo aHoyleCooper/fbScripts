@@ -9,8 +9,9 @@
 
 $(function(){
     var template = "Description:\n\n\nExpected behavior: \nActual behavior: \n\nSteps to reproduce:\n1. \n2. \n3. \n\nWorkaround:\n\n\nNotify:\n\n\nCreated using the guidelines found here:\nhttps://goo.gl/2kC80F";
+    var rtfTemplate = "<p>Description:</p><p>Expected behavior:<br>Actual behavior:</p><p>Steps to reproduce:<br>1.<br>2.<br>3.</p><p>Workaround:</p><p>Notify:</p><p>Created using the guidelines found <a href='https://goo.gl/2kC80F' target='_blank'>here</a></p>"
     $('.wideTextareaWrapper textarea').val(template);
-    $('.article-content.ckeditor-body.bug-rich-edit').html("<p>" + template + "</p>");
+    $('.bug-rich-edit').children[0].innerHTML = ftfTemplate;
     
     $('#idBugTitleEdit').css("border", "solid 2px red");
     $('#kayakoxticketu55').css("border", "solid 2px red");
