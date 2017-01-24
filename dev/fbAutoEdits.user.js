@@ -3,8 +3,8 @@
 // @author       Aaron C
 // @match        http://*/default.asp*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
-// @version      1.0.2
-// @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/fbAutoEdits.user.js
+// @version      1.0.3
+// @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
 var oldVals = [];
