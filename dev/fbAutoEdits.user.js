@@ -3,7 +3,9 @@
 // @author       Aaron C
 // @match        http://*/default.asp*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
-// @version      1.0.4
+// @include      http://fogbugz/
+// @include      http://10.20.1.37/
+// @version      1.0.5
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
