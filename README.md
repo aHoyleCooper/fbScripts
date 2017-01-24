@@ -4,10 +4,10 @@ FogBugz new ticket template. This will auto-update once per day by default (you 
 To Install:
 
 1. Download Tampermonkey<br>
-Google Chrome: https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en<br>
-Firefox: https://addons.mozilla.org/en-Us/firefox/addon/tampermonkey/<br>
-Safari: http://tampermonkey.net/?browser=safari
+Chrome: <a href='https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en' target='_blank'>Tampermonkey for Chrome</a><br>
+Firefox: <a href='https://addons.mozilla.org/en-Us/firefox/addon/tampermonkey/' target='_blank'>Tampermonkey for Firefox</a><br>
+Safari: <a href='http://tampermonkey.net/?browser=safari' target='_blank'>Tampermonkey for Safari</a>
 
-2. Install the script--visit: https://github.com/aHoyleCooper/fbScripts/raw/master/newFbTicketTemplate.user.js
+2. Install the script by clicking <a href='https://github.com/aHoyleCooper/fbScripts/raw/master/newFbTicketTemplate.user.js' target='_blank'>here</a>
 
-3. Done! To test, go to <a href='http://fogbugz/' target='_blank'>http://fogbugz/</a> and click 'New Case'
+3. Done! To test, go to <a href='http://fogbugz/' target='_blank'>Fogbugz</a> and click 'New Case'
