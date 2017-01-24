@@ -5,7 +5,7 @@ Fogbugz dev scripts for quickly editing and categorizing tickets. This will auto
 -Automatically assigns a priority based on 'Customer Impact' and 'Probability of Occurrence' selections
 
 ##Upcoming:
--Quick actions for common categorizations like low/low/green/bug backlog
+-Quick actions for common categorizations like low/low/green/bug backlog<br>
 -Quick actions to quickly assign impact, probability, and priority with one click
 
 ##Install:
