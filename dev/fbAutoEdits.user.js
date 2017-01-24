@@ -55,3 +55,5 @@ var checkDropdownValues = function () {
 $(document).ready(function() {
     setInterval(checkDropdownValues, 1000);
 });
+
+// testing auto-update
