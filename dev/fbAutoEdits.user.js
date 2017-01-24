@@ -3,7 +3,7 @@
 // @author       Aaron C
 // @match        http://*/default.asp*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
-// @version      1.0.3
+// @version      1.0.4
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -56,4 +56,4 @@ $(document).ready(function() {
     setInterval(checkDropdownValues, 1000);
 });
 
-// testing auto-update: test1
+// testing auto-update: test2
