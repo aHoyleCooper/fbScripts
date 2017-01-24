@@ -12,7 +12,7 @@ $(function(){
     var rtfTemplate = "<p>Description:</p><p>Expected behavior:<br>Actual behavior:</p><p>Steps to reproduce:<br>1.<br>2.<br>3.</p><p>Workaround:</p><p>Notify:</p><p>Created using the guidelines found <a href='https://goo.gl/2kC80F' target='_blank'>here</a></p>"
     $('.wideTextareaWrapper textarea').val(template);
     $('.bug-rich-edit').ready(function() {
-        $('.bug-rich-edit').children[0].innerHTML = rtfTemplate;
+        $('.bug-rich-edit').innerHTML = rtfTemplate;
     });
     $('#idBugTitleEdit').css("border", "solid 2px red");
     $('#kayakoxticketu55').css("border", "solid 2px red");
