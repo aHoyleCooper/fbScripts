@@ -3,7 +3,8 @@ FogBugz Tampermonkey Scripts
 
 1. Download Tampermonkey<br>
 Google Chrome: https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en<br>
-Firefox: https://addons.mozilla.org/en-Us/firefox/addon/tampermonkey/
+Firefox: https://addons.mozilla.org/en-Us/firefox/addon/tampermonkey/<br>
+Safari: http://tampermonkey.net/?browser=safari
 
 2. Install the script--visit: https://github.com/aHoyleCooper/fbScripts/raw/master/newFbTicketTemplate.user.js
 
