@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         New Ticket Template
 // @author       Aaron C
-// @match        http://fogbugz/default.asp?command=new&pg=pgEditBug
+// @match        http://*/default.asp?command=new&pg=pgEditBug
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
-// @version      1.0.1
+// @version      1.0.2
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/newFbTicketTemplate.user.js
 // ==/UserScript==
 
