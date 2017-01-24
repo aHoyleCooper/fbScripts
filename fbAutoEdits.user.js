@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Fogbugz
 // @author       Aaron C
-// @match        http://fogbugz/default.asp*
+// @match        http://*/default.asp*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
-// @version      1.0.1
+// @version      1.0.2
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/fbAutoEdits.user.js
 // ==/UserScript==
 
