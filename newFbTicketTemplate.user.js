@@ -3,7 +3,7 @@
 // @author       Aaron C
 // @match        http://*/default.asp?command=new&pg=pgEditBug
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
-// @version      1.0.2
+// @version      1.0.3
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/newFbTicketTemplate.user.js
 // ==/UserScript==
 
@@ -13,11 +13,13 @@ $(function(){
     if ($('.virtualLink.bold').text() == "Plain text") {
         $('.wideTextareaWrapper textarea').val(template);
     } else {
-        $(".virtualLink")[0].click();
-        $('#sEventEdit').val(template);
         setTimeout(function() {
-            $(".virtualLink")[1].click();
-        }, 500);
+            $(".virtualLink")[0].click();
+            $('#sEventEdit').val(template);
+            setTimeout(function() {
+                $(".virtualLink")[1].click();
+            }, 250);
+        }, 250);
     }
 
     $('#idBugTitleEdit').css("border", "solid 2px red");
