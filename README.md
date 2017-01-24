@@ -7,9 +7,9 @@ FogBugz new ticket template. This will auto-update once per day by default (you 
 
 ##Install:
 1. Download Tampermonkey<br>
-Chrome: <a href='https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en' target='_blank'>Tampermonkey for Chrome</a><br>
-Firefox: <a href='https://addons.mozilla.org/en-Us/firefox/addon/tampermonkey/' target='_blank'>Tampermonkey for Firefox</a><br>
-Safari: <a href='http://tampermonkey.net/?browser=safari' target='_blank'>Tampermonkey for Safari</a>
+-<a href='https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en' target='_blank'>Tampermonkey for Chrome</a><br>
+-<a href='https://addons.mozilla.org/en-Us/firefox/addon/tampermonkey/' target='_blank'>Tampermonkey for Firefox</a><br>
+-<a href='http://tampermonkey.net/?browser=safari' target='_blank'>Tampermonkey for Safari</a>
 
 2. Install the script by clicking <a href='https://github.com/aHoyleCooper/fbScripts/raw/master/newFbTicketTemplate.user.js' target='_blank'>here</a>
 
