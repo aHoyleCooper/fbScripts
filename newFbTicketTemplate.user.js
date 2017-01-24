@@ -10,7 +10,7 @@
 $(function(){
     var template = "Description:\n\n\nExpected behavior: \nActual behavior: \n\nSteps to reproduce:\n1. \n2. \n3. \n\nWorkaround:\n\n\nNotify:\n\n\nCreated using the guidelines found here:\nhttps://goo.gl/2kC80F";
     $('.wideTextareaWrapper textarea').val(template);
-    $('#www-fogcreek-com-fogbugz').html(template);
+    $('.article-content.ckeditor-body.bug-rich-edit').html("<p>" + template + "</p>");
     
     $('#idBugTitleEdit').css("border", "solid 2px red");
     $('#kayakoxticketu55').css("border", "solid 2px red");
