@@ -15,6 +15,6 @@ Chrome: <a href='https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkk
 Firefox: <a href='https://addons.mozilla.org/en-Us/firefox/addon/tampermonkey/' target='_blank'>Tampermonkey for Firefox</a><br>
 Safari: <a href='http://tampermonkey.net/?browser=safari' target='_blank'>Tampermonkey for Safari</a>
 
-2. Install the autoPriority script by clicking <a href='https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js' target='_blank'>here</a>
+2. Install the autoEdits script by clicking <a href='https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js' target='_blank'>here</a>
 
 3. Done! To test, go to <a href='http://fogbugz/' target='_blank'>Fogbugz</a> and edit a case

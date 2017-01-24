@@ -1,6 +1,10 @@
 # fbScripts
 FogBugz new ticket template. This will auto-update once per day by default (you can change this in your tampermonkey settings), so you should automatically receive any updates made. If you need a fix immediately, you can re-install the most up-to-date version by clicking the link in step 2. Please contact Aaron Cooper via HipChat to report a bug or if you have any suggestions.
 
+Features:
+-Automatically fills in suggested fields in the bug description
+-Highlights the most important selections and fields
+
 To Install:
 
 1. Download Tampermonkey<br>
