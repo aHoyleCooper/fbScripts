@@ -13,14 +13,10 @@ $(function(){
     if ($('.virtualLink.bold').text() == "Plain text") {
         $('.wideTextareaWrapper textarea').val(template);
     } else {
+        $(".virtualLink")[0].click();
+        $('#sEventEdit').val(template);
         setTimeout(function() {
-            $(".virtualLink")[0].click();
-            setTimeout(function() {
-                $('.wideTextareaWrapper textarea').val(template);
-                setTimeout(function() {
-                    $(".virtualLink")[1].click();
-                }, 500);
-            }, 500);
+            $(".virtualLink")[1].click();
         }, 500);
     }
 
