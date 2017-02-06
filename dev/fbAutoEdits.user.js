@@ -51,4 +51,5 @@ $(document.body).on('click', '#idDropList_customerximpactu43_oDropList div', fun
 $(document.body).on('click', '#idDropList_probabilityxofxoccurrencer04_oDropList div', function(){
     var newPriority = setPriority($(".droplist-text:eq(7)").val(), $(this).text());
     $(".droplist-text:eq(9)").val(newPriority.levelString);
+    $(("#ixPriority option")[newPriority.level - 1]).attr('selected', 'selected');
 });
