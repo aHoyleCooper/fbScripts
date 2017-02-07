@@ -5,33 +5,33 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.0.7
+// @version      1.0.8
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
 function setPriority(impact, probability) {
     var level = -1;
     if (impact == "--" || probability == "--") {
-        console.log("Setting priority to Undecided");
+        // console.log("Setting priority to Undecided");
         level = 7;
     } else if (impact === "Critical" || impact === "High") {
         if (probability === "Low") {
-            console.log("Setting priority to Yellow");
+            // console.log("Setting priority to Yellow");
             level = 2;
         } else if (probability != "--") {
-            console.log("Setting priority to Red");
+            // console.log("Setting priority to Red");
             level = 1;
         }
     } else if (impact === "Medium") {
         if (probability === "Low") {
-            console.log("Setting priority to Green");
+            // console.log("Setting priority to Green");
             level = 3;
         } else if (probability != "--") {
-            console.log("Setting priority to Yellow");
+            // console.log("Setting priority to Yellow");
             level = 2;
         }
     } else {
-        console.log("Setting priority to Green");
+        // console.log("Setting priority to Green");
         level = 3;
     }
     var levelDict = {1:"1 - Red", 2:"2 - Yellow", 3:"3 - Green", 7:"7 - Undecided"};
