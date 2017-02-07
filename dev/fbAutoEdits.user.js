@@ -5,7 +5,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.0.6
+// @version      1.0.7
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
