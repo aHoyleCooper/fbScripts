@@ -53,3 +53,12 @@ $(document.body).on('click', '#idDropList_probabilityxofxoccurrencer04_oDropList
     $(".droplist-text:eq(9)").val(newPriority.levelString);
     $(("#ixPriority option")[newPriority.level - 1]).attr('selected', 'selected');
 });
+
+$(document.body).on('wheel', '#idDropList_ixPersonAssignedTo_oDropList', function(e){
+    var scrlAmt = e.originalEvent.deltaY;
+    if (scrlAmt < 0 && $(this).scrollTop() === 0) {
+        e.originalEvent.preventDefault();
+    } else if (scrlAmt > 0 && $(this).scrollTop() >= $(this).prop("scrollHeight") - $(this).outerHeight()) {
+        e.originalEvent.preventDefault();
+    }
+});
