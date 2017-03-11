@@ -5,7 +5,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.0.4
+// @version      1.0.5
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/newFbTicketTemplate.user.js
 // ==/UserScript==
 
@@ -14,7 +14,7 @@ $(function(){
     
     if ($('.virtualLink.bold').text() == "Plain text") {
         $('.wideTextareaWrapper textarea').val(template);
-    } else {
+    } else if ($('.virtualLink.bold').text() == "Rich text") {
         setTimeout(function() {
             $(".virtualLink")[0].click();
             $('#sEventEdit').val(template);

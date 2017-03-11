@@ -5,12 +5,12 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.0.9
+// @version      1.1.0
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
 function setPriority(impact, probability) {
-    var level = -1;
+    var level = 7;
     if (impact == "--" || probability == "--") {
         // console.log("Setting priority to Undecided");
         level = 7;
@@ -35,26 +35,142 @@ function setPriority(impact, probability) {
         level = 3;
     }
     var levelDict = {1:"1 - Red", 2:"2 - Yellow", 3:"3 - Green", 7:"7 - Undecided"};
-    if (level > -1) {
-        return {"level":level, "levelString":levelDict[level]};
-    } else {
-        return {"level":7, "levelString":"7 - Undecided"};
+    var levelString = levelDict[level];
+
+    $(".droplist-text:eq(9)").val(levelDict[level]);
+    $("#ixPriority option").removeAttr('selected');
+    $($("#ixPriority option")[level - 1]).attr('selected', 'selected');
+}
+
+function setImpact(impact){
+    // console.log("setting impact to:", impact);
+    $('#idDropList_customerximpactu43_oText').val(impact);
+    $('#customerximpactu43 option').each(function(){
+        if ($(this).text() === impact) {
+            $(this).attr('selected', 'selected');
+        } else {
+            $(this).removeAttr('selected');
+        }
+    });
+}
+
+function setProbability(prob) {
+    // console.log("setting probability to:", prob);
+    $('#idDropList_probabilityxofxoccurrencer04_oText').val(prob);
+    $('#probabilityxofxoccurrencer04 option').each(function(){
+        if ($(this).text() === prob) {
+            $(this).attr('selected', 'selected');
+        } else {
+            $(this).removeAttr('selected');
+        }
+    });
+}
+
+function setMilestone(milestone){
+    // console.log("setting milestone to:", milestone);
+    $('#idDropList_ixFixFor_oText').val(milestone);
+    $('#ixFixFor').each(function(){
+        if ($(this).text() === milestone) {
+            $(this).attr('selected', 'selected');
+        } else {
+            $(this).removeAttr('selected');
+        }
+    });
+}
+
+function assignToUser(user) {
+    // console.log("assigning ticket to:", user);
+    $('#idDropList_ixPersonAssignedTo_oText').val(user);
+    $('#ixPersonAssignedTo option').each(function(){
+        if ($(this).text() === " " + user + " ") {
+            $(this).attr('selected', 'selected');
+        } else {
+            $(this).removeAttr('selected');
+        }
+    });
+}
+
+var btnCss = {
+    "height":"80%",
+    "cursor":"pointer",
+    "display":"flex",
+    "align-items":"center",
+    "justify-content":"center",
+    "border":"solid 1px transparent",
+    "border-radius":"4px",
+    "padding":"0 5px",
+    "color":"#555",
+    "font-size":"13px"
+};
+var listCss = {
+    "display":"flex",
+    "align-items":"center",
+    "justify-content":"flex-end",
+    "margin-top":"-15px"
+};
+var quickBtn1 = '<li class="quickBtn1">Assign to Me</li>';
+var quickBtn2 = '<li class="quickBtn2">Do The Needful</li>';
+var quickBtn3 = '<li class="quickBtn3">Green</li>';
+var quickBtn4 = '<li class="quickBtn4">Yellow</li>';
+var quickBtnLast = '<li class="quickBtnLast" style="margin-right:5px;">Red</li>';
+var allBtns = [quickBtn1, quickBtn2, quickBtn3, quickBtn4, quickBtnLast];
+var allFuncs = {
+    ".quickBtn1":function(){
+        // console.log('assigning ticket to you');
+        assignToUser($('#username').text());
+    },
+    ".quickBtn2":function(){
+        // console.log('setting milestone to "Bug Backlog", assignment to "Up For Grabs", and priority to "3 - Green"');
+        setMilestone('Bug Backlog');
+        assignToUser('Up For Grabs');
+        setImpact('Low');
+        setProbability('Low');
+        setPriority('Low','Low');
+    },
+    ".quickBtn3":function(){
+        // console.log('setting priority to "3 - Green"');
+        setImpact('Low');
+        setProbability('Low');
+        setPriority('Low','Low');
+    },
+    ".quickBtn4":function(){
+        // console.log('setting priority to "2 - Yellow"');
+        setImpact('Medium');
+        setProbability('Medium');
+        setPriority('Medium','Medium');
+    },
+    ".quickBtnLast":function(){
+        // console.log('setting priority to "1 - Red"');
+        setImpact('High');
+        setProbability('High');
+        setPriority('High','High');
     }
+};
+
+function setBtnBehavior(className, func) {
+    $(className).css(btnCss);
+    $(className).click(func);
+    $(className).hover(function(){
+            $(this).css({"background-color":"#fff", "border-color":"#ddd"});
+        }, function(){
+            $(this).css({"background-color":"transparent", "border-color":"transparent"});
+    });
+    $(className).mousedown(function(){
+        $(this).css({"background-color":"#ccc"});
+    });
+    $(className).mouseup(function(){
+        $(this).css({"background-color":"#fff"});
+    });
 }
 
 $(document.body).on('click', '#idDropList_customerximpactu43_oDropList div', function(){
-    var newPriority = setPriority($(this).text(), $(".droplist-text:eq(8)").val());
-    $(".droplist-text:eq(9)").val(newPriority.levelString);
-    $("#ixPriority option").removeAttr('selected');
-    $($("#ixPriority option")[newPriority.level - 1]).attr('selected', 'selected');
+    setPriority($(this).text(), $(".droplist-text:eq(8)").val());
 });
 
 $(document.body).on('click', '#idDropList_probabilityxofxoccurrencer04_oDropList div', function(){
-    var newPriority = setPriority($(".droplist-text:eq(7)").val(), $(this).text());
-    $(".droplist-text:eq(9)").val(newPriority.levelString);
-    $("#ixPriority option").removeAttr('selected');
-    $($("#ixPriority option")[newPriority.level - 1]).attr('selected', 'selected');
+    setPriority($(".droplist-text:eq(7)").val(), $(this).text());
 });
+
 $(document.body).on('wheel', '#idDropList_ixPersonAssignedTo_oDropList', function(e){
     var scrlAmt = e.originalEvent.deltaY;
     if (scrlAmt < 0 && $(this).scrollTop() === 0) {
@@ -80,4 +196,24 @@ $(document.body).on('wheel', '#idDropList_ixProject_oDropList', function(e){
     } else if (scrlAmt > 0 && $(this).scrollTop() >= $(this).prop("scrollHeight") - $(this).outerHeight()) {
         e.originalEvent.preventDefault();
     }
+});
+
+$('#edit0').click(function(){
+    $('.toolbar.nextprev').css({"float":"none"});
+    $('.toolbar.buttons').css(listCss);
+    $('.toolbar.buttons').html(allBtns.join('<p style="margin:0 5px;">|</p>'));
+    $.each(allFuncs, function(key, value){
+        setBtnBehavior(key, value);
+    });
+    /* have to do this because Fogbugz is a steaming pile of steam
+       for whatever reason, when you click 'Okay' or 'Cancel', none of the click events work,
+       nor can I figure out a reliable way add new listeners without reloading the scripts */
+    $('#Button_CancelEdit').click(function(){
+        window.location.href = window.location.href.split('#')[0];
+    });
+    $('#Button_OKEdit').click(function(){
+        setTimeout(function(){
+            window.location.href = window.location.href.split('#')[0];
+        }, 500);
+    });
 });
