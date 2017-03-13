@@ -5,7 +5,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.1.2
+// @version      1.1.3
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -122,9 +122,9 @@ function appendQuickButtons(){
     $.each(allFuncs, function(key, value){
         setBtnBehavior(key, value);
     });
-    /* have to do this because Fogbugz is a steaming pile of steam
-       for whatever reason, when you click 'Okay' or 'Cancel', none of the click events work,
-       nor can I figure out a reliable way add new listeners without reloading the scripts */
+    /*  have to do this because Fogbugz is a steaming pile of steam
+        for whatever reason, when you click 'Okay' or 'Cancel', none of the click events work,
+        nor can I figure out a reliable way add new listeners without reloading the scripts */
     $('#Button_CancelEdit').click(function(){
         window.location.href = window.location.href.split('#')[0];
     });
@@ -153,6 +153,10 @@ var listCss = {
     "justify-content":"flex-end",
     "margin-top":"-15px"
 };
+/*  to add a function, you'll need to create a <li>, give it a class name, assign it to a variable,
+    and add that variable to the allBtns list. Then, add a new entry to the allFuncs JSON dictionary.
+    the class name you gave to the <li> should be the key, and the value should be the function you
+    want your button to execute on click. */
 var quickBtn1 = '<li class="quickBtn1">Assign to Me</li>';
 var quickBtn2 = '<li class="quickBtn2">Do The Needful</li>';
 var quickBtn3 = '<li class="quickBtn3">Green</li>';
@@ -221,5 +225,9 @@ $('#reopen0').click(function(){
 });
 
 $('#editClosed0').click(function(){
+    appendQuickButtons();
+});
+
+$('#reactivate0').click(function(){
     appendQuickButtons();
 });
