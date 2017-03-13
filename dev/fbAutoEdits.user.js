@@ -5,7 +5,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.1.3
+// @version      1.1.4
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -131,7 +131,7 @@ function appendQuickButtons(){
     $('#Button_OKEdit').click(function(){
         setTimeout(function(){
             window.location.href = window.location.href.split('#')[0];
-        }, 500);
+        }, 600);
     });
 }
 
@@ -220,14 +220,14 @@ $('#edit0').click(function(){
     appendQuickButtons();
 });
 
-$('#reopen0').click(function(){
+$('.actionButton2.edit').click(function(){
     appendQuickButtons();
 });
 
-$('#editClosed0').click(function(){
+$('.actionButton2.reopen').click(function(){
     appendQuickButtons();
 });
 
-$('#reactivate0').click(function(){
+$('.actionButton2.editClosed').click(function(){
     appendQuickButtons();
 });
