@@ -5,7 +5,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.1.0
+// @version      1.1.1
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -90,6 +90,42 @@ function assignToUser(user) {
     });
 }
 
+function setBtnBehavior(className, func) {
+    $(className).css(btnCss);
+    $(className).click(func);
+    $(className).hover(function(){
+            $(this).css({"background-color":"#fff", "border-color":"#ddd"});
+        }, function(){
+            $(this).css({"background-color":"transparent", "border-color":"transparent"});
+    });
+    $(className).mousedown(function(){
+        $(this).css({"background-color":"#ccc"});
+    });
+    $(className).mouseup(function(){
+        $(this).css({"background-color":"#fff"});
+    });
+}
+
+function appendQuickButtons(){
+    $('.toolbar.nextprev').css({"float":"none"});
+    $('.toolbar.buttons').css(listCss);
+    $('.toolbar.buttons').html(allBtns.join('<p style="margin:0 5px;">|</p>'));
+    $.each(allFuncs, function(key, value){
+        setBtnBehavior(key, value);
+    });
+    /* have to do this because Fogbugz is a steaming pile of steam
+       for whatever reason, when you click 'Okay' or 'Cancel', none of the click events work,
+       nor can I figure out a reliable way add new listeners without reloading the scripts */
+    $('#Button_CancelEdit').click(function(){
+        window.location.href = window.location.href.split('#')[0];
+    });
+    $('#Button_OKEdit').click(function(){
+        setTimeout(function(){
+            window.location.href = window.location.href.split('#')[0];
+        }, 500);
+    });
+}
+
 var btnCss = {
     "height":"80%",
     "cursor":"pointer",
@@ -147,22 +183,6 @@ var allFuncs = {
     }
 };
 
-function setBtnBehavior(className, func) {
-    $(className).css(btnCss);
-    $(className).click(func);
-    $(className).hover(function(){
-            $(this).css({"background-color":"#fff", "border-color":"#ddd"});
-        }, function(){
-            $(this).css({"background-color":"transparent", "border-color":"transparent"});
-    });
-    $(className).mousedown(function(){
-        $(this).css({"background-color":"#ccc"});
-    });
-    $(className).mouseup(function(){
-        $(this).css({"background-color":"#fff"});
-    });
-}
-
 $(document.body).on('click', '#idDropList_customerximpactu43_oDropList div', function(){
     setPriority($(this).text(), $(".droplist-text:eq(8)").val());
 });
@@ -199,21 +219,13 @@ $(document.body).on('wheel', '#idDropList_ixProject_oDropList', function(e){
 });
 
 $('#edit0').click(function(){
-    $('.toolbar.nextprev').css({"float":"none"});
-    $('.toolbar.buttons').css(listCss);
-    $('.toolbar.buttons').html(allBtns.join('<p style="margin:0 5px;">|</p>'));
-    $.each(allFuncs, function(key, value){
-        setBtnBehavior(key, value);
-    });
-    /* have to do this because Fogbugz is a steaming pile of steam
-       for whatever reason, when you click 'Okay' or 'Cancel', none of the click events work,
-       nor can I figure out a reliable way add new listeners without reloading the scripts */
-    $('#Button_CancelEdit').click(function(){
-        window.location.href = window.location.href.split('#')[0];
-    });
-    $('#Button_OKEdit').click(function(){
-        setTimeout(function(){
-            window.location.href = window.location.href.split('#')[0];
-        }, 500);
-    });
+    appendQuickButtons();
+});
+
+$('#reopen0').click(function(){
+    appendQuickButtons();
+});
+
+$('#editClosed0').click(function(){
+    appendQuickButtons();
 });
