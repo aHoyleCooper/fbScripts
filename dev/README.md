@@ -2,7 +2,8 @@
 Fogbugz dev scripts for quickly editing and categorizing tickets. This will auto-update once per day by default (you can change this in your tampermonkey settings), so you should automatically receive any updates made. If you need a fix immediately, click the tampermonkey icon next to the url bar in your browser and select 'Check for userscript updates', or you can re-install the most up-to-date version manually by clicking the link in step 2. Please contact Aaron Cooper via HipChat to report a bug or if you have any suggestions.
 
 ##Features:
--Automatically assigns a priority based on 'Customer Impact' and 'Probability of Occurrence' selections
+-Automatically assigns a priority based on 'Customer Impact' and 'Probability of Occurrence' selections<br>
+-Adds quick buttons for assigning to yourself, setting a case to Bug Backlog/Up For Grabs/Low/Low/Green, or assigning Red, Yellow, or Green priorities.
 
 ##Upcoming:
 -TBD (suggestions welcome)
