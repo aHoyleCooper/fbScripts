@@ -4,7 +4,7 @@ Fogbugz dev scripts for quickly editing and categorizing tickets. This will auto
 ##Features:
 -Automatically assigns a priority based on 'Customer Impact' and 'Probability of Occurrence' selections<br>
 -Adds quick buttons for assigning to yourself, setting a case to Bug Backlog/Up For Grabs/Low/Low/Green (named 'Do The Needful'), or assigning Red, Yellow, or Green priorities. Try not to use the back button.<br>
--Any scroll events past the max for a dropdown list will now not get transferred to the parent window (more scroll acceleration friendly)
+-Any scroll events past the min or max for a dropdown list will now not get transferred to the parent window (more scroll acceleration friendly)
 
 ##Upcoming:
 -TBD (suggestions welcome)
