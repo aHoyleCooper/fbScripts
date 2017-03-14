@@ -20,7 +20,6 @@
         is to transfer any additional scroll delta to the parent container. Since scroll acceleration
         is so common, and since these dropdown lists are narrow but very long, I block any scroll past
         the min or max for any dropdown list with a scrollbar while hovered.
-    
 */
 function blockScroll(e, object){
     var scrlAmt = e.originalEvent.deltaY;
@@ -35,9 +34,9 @@ function blockScroll(e, object){
     Args:
         impact (string) - the string value of the 'Customer Impact' field ('--', 'Low', 'Medium', 'High', 'Critical', 'Feature')
         probability (string) - the string value of the 'Probability of Occurrence' field ('--', 'Low', 'Medium', 'High', 'Unknown')
-    Desc: 
+    Desc:
         Sets the value of the Priority dropdown based on the imact and probability for a case. I use impact and probability
-        as inputs, rather than just the desired impact so I can automatically set them if a user sets/changes the impact or probability 
+        as inputs, rather than just the desired impact so I can automatically set them if a user sets/changes the impact or probability
         on a ticket automatically, as well as set the priority on demand.
 */
 function setPriority(impact, probability) {
@@ -155,7 +154,7 @@ function assignToUser(user) {
         func (function) - the function for the button to perform on click
     Desc:
         Sets the behavior of the quick buttons so they are positioned correctly, have hover and click effects,
-        and run the appropriate functions when clicked. This is primarily used in appendQuickButtons, but I 
+        and run the appropriate functions when clicked. This is primarily used in appendQuickButtons, but I
         left it separate to support the case where buttons could get injected into the page after the fact
 */
 function setBtnBehavior(className, func) {
@@ -179,7 +178,7 @@ function setBtnBehavior(className, func) {
         btnList (string list) - list of HTML strings that make up each button to be injected. Should be HTML list items, each with a class set
         funcList (JSON dictionary) - dictionary with the class name of the button as the key, and the function to run on button click as the value
     Desc:
-        This function iterates through the btnList variable, uses setBtnBehavior() in combination with the allFuncs 
+        This function iterates through the btnList variable, uses setBtnBehavior() in combination with the allFuncs
         dictionary to set the behavior of each quick button, then finally inject the buttons into the FogBugz case header.
 */
 function appendQuickButtons(btnList, funcList){
@@ -197,7 +196,8 @@ function appendQuickButtons(btnList, funcList){
     });
     /*  have to do this because Fogbugz is a steaming pile of steam
         for whatever reason, when you click 'Okay' or 'Cancel', none of the click events work,
-        nor can I figure out a reliable way add new listeners without reloading the scripts */
+        nor can I figure out a reliable way add new listeners without reloading the scripts
+    */
     $('#Button_CancelEdit').click(function(){
         window.location.href = window.location.href.split('#')[0];
     });
@@ -210,6 +210,7 @@ function appendQuickButtons(btnList, funcList){
 
 
 /***************************************** Variables *****************************************/
+
 var btnCss = {
     "height":"80%",
     "cursor":"pointer",
@@ -225,10 +226,11 @@ var btnCss = {
 /*  to add a function, you'll need to create a <li>, give it a class name, assign it to a variable,
     and add that variable to the allBtns list. Then, add a new entry to the allFuncs JSON dictionary.
     the class name you gave to the <li> should be the key, and the value should be the function you
-    want your button to execute on click. */
+    want your button to execute on click.
+*/
 var quickBtn1 = '<li class="quickBtn1">Claim</li>';
 var quickBtn2 = '<li class="quickBtn2">Incoming</li>';
-var quickBtn3 = '<li class="quickBtn3">Do The Needful</li>';
+var quickBtn3 = '<li class="quickBtn3">Scrub</li>';
 var quickBtn4 = '<li class="quickBtn4">Green</li>';
 var quickBtn5 = '<li class="quickBtn5">Yellow</li>';
 var quickBtnLast = '<li class="quickBtnLast" style="margin-right:5px;">Red</li>';
