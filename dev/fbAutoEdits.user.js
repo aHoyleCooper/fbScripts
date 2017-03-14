@@ -5,10 +5,23 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.1.5
+// @version      1.1.6
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
+/***************************************** Functions *****************************************/
+
+/*  Function: blockScroll
+    Args:
+        e (event) - scroll event
+        object (DOM object) - the DOM object that has the scrollbar
+    Desc:
+        Default scroll behavior once the hovered object hits it scroll min or max
+        is to transfer any additional scroll delta to the parent container. Since scroll acceleration
+        is so common, and since these dropdown lists are narrow but very long, I block any scroll past
+        the min or max for any dropdown list with a scrollbar while hovered.
+    
+*/
 function blockScroll(e, object){
     var scrlAmt = e.originalEvent.deltaY;
     if (scrlAmt < 0 && object.scrollTop() === 0) {
@@ -18,6 +31,15 @@ function blockScroll(e, object){
     }
 }
 
+/*  Function: setPriority
+    Args:
+        impact (string) - the string value of the 'Customer Impact' field ('--', 'Low', 'Medium', 'High', 'Critical', 'Feature')
+        probability (string) - the string value of the 'Probability of Occurrence' field ('--', 'Low', 'Medium', 'High', 'Unknown')
+    Desc: 
+        Sets the value of the Priority dropdown based on the imact and probability for a case. I use impact and probability
+        as inputs, rather than just the desired impact so I can automatically set them if a user sets/changes the impact or probability 
+        on a ticket automatically, as well as set the priority on demand.
+*/
 function setPriority(impact, probability) {
     var level = 7;
     if (impact == "--" || probability == "--") {
@@ -51,6 +73,13 @@ function setPriority(impact, probability) {
     $($("#ixPriority option")[level - 1]).attr('selected', 'selected');
 }
 
+/*  Function: setImpact
+    Args:
+        impact (string) - the string value of the desired customer impact ('--', 'Low', 'Medium', 'High', 'Critical', 'Feature'). Case sensitive.
+    Desc:
+        Sets the value of the 'Customer Impact' field to the value of the supplied impact argument. Must match a legitimate impact value
+        described above. Setting the impact in this manner will not trigger an automatic priority update.
+*/
 function setImpact(impact){
     // console.log("setting impact to:", impact);
     $('#idDropList_customerximpactu43_oText').val(impact);
@@ -63,6 +92,13 @@ function setImpact(impact){
     });
 }
 
+/*  Function: setProbability
+    Args:
+        prob (string) - the string value of the desired probability of occurrence ('--', 'Low', 'Medium', 'High', 'Unknown'). Case sensitive.
+    Desc:
+        Sets the value of the 'Probability of Occurrence' field to the value of the supplied prob argument. Must match a legitimate
+        probability value described above. Setting the probability in this manner will not trigger an automatic priority update.
+*/
 function setProbability(prob) {
     // console.log("setting probability to:", prob);
     $('#idDropList_probabilityxofxoccurrencer04_oText').val(prob);
@@ -75,6 +111,13 @@ function setProbability(prob) {
     });
 }
 
+/*  Function: setMilestone
+    Args:
+        milestone (string) - the string value of the desired milestone. See Fogbugz for legitimate milestones. Case sensitive.
+    Desc:
+        Sets the value of the 'Milestone' field to the value of the supplied milestone argument. Must match a legitimate
+        milestone value described above.
+*/
 function setMilestone(milestone){
     // console.log("setting milestone to:", milestone);
     $('#idDropList_ixFixFor_oText').val(milestone);
@@ -87,6 +130,13 @@ function setMilestone(milestone){
     });
 }
 
+/*  Function: assignToUser
+    Args:
+        user (string) - the string value of the desired user. See Fogbugz for legitimate usernames. Case sensitive.
+    Desc:
+        Sets the value of the 'Assigned To' field to the value of the supplied user argument. Must match a legitimate
+        user account.
+*/
 function assignToUser(user) {
     // console.log("assigning ticket to:", user);
     $('#idDropList_ixPersonAssignedTo_oText').val(user);
@@ -99,6 +149,15 @@ function assignToUser(user) {
     });
 }
 
+/*  Function: setBtnBehavior
+    Args:
+        className (string) - the string value of the class name for the button your are configuring
+        func (function) - the function for the button to perform on click
+    Desc:
+        Sets the behavior of the quick buttons so they are positioned correctly, have hover and click effects,
+        and run the appropriate functions when clicked. This is primarily used in appendQuickButtons, but I 
+        left it separate to support the case where buttons could get injected into the page after the fact
+*/
 function setBtnBehavior(className, func) {
     $(className).css(btnCss);
     $(className).click(func);
@@ -115,11 +174,25 @@ function setBtnBehavior(className, func) {
     });
 }
 
-function appendQuickButtons(){
+/*  Function: appendQuickButtons
+    Args:
+        btnList (string list) - list of HTML strings that make up each button to be injected. Should be HTML list items, each with a class set
+        funcList (JSON dictionary) - dictionary with the class name of the button as the key, and the function to run on button click as the value
+    Desc:
+        This function iterates through the btnList variable, uses setBtnBehavior() in combination with the allFuncs 
+        dictionary to set the behavior of each quick button, then finally inject the buttons into the FogBugz case header.
+*/
+function appendQuickButtons(btnList, funcList){
+    var listCss = {
+        "display":"flex",
+        "align-items":"center",
+        "justify-content":"flex-end",
+        "margin-top":"-15px"
+    };
     $('.toolbar.nextprev').css({"float":"none"});
     $('.toolbar.buttons').css(listCss);
-    $('.toolbar.buttons').html(allBtns.join('<p style="margin:0 5px;">|</p>'));
-    $.each(allFuncs, function(key, value){
+    $('.toolbar.buttons').html(btnList.join('<p style="margin:0 5px;">|</p>'));
+    $.each(funcList, function(key, value){
         setBtnBehavior(key, value);
     });
     /*  have to do this because Fogbugz is a steaming pile of steam
@@ -135,6 +208,8 @@ function appendQuickButtons(){
     });
 }
 
+
+/***************************************** Variables *****************************************/
 var btnCss = {
     "height":"80%",
     "cursor":"pointer",
@@ -146,12 +221,6 @@ var btnCss = {
     "padding":"0 5px",
     "color":"#555",
     "font-size":"13px"
-};
-var listCss = {
-    "display":"flex",
-    "align-items":"center",
-    "justify-content":"flex-end",
-    "margin-top":"-15px"
 };
 /*  to add a function, you'll need to create a <li>, give it a class name, assign it to a variable,
     and add that variable to the allBtns list. Then, add a new entry to the allFuncs JSON dictionary.
@@ -202,6 +271,9 @@ var allFuncs = {
     }
 };
 
+
+/***************************************** Document Load *****************************************/
+
 $(document.body).on('wheel', '#idDropList_ixPersonAssignedTo_oDropList', function(e){
     blockScroll(e, $(this));
 });
@@ -223,17 +295,17 @@ $(document.body).on('click', '#idDropList_probabilityxofxoccurrencer04_oDropList
 });
 
 $('#edit0').click(function(){
-    appendQuickButtons();
+    appendQuickButtons(allBtns, allFuncs);
 });
 
 $('.actionButton2.edit').click(function(){
-    appendQuickButtons();
+    appendQuickButtons(allBtns, allFuncs);
 });
 
 $('.actionButton2.reopen').click(function(){
-    appendQuickButtons();
+    appendQuickButtons(allBtns, allFuncs);
 });
 
 $('.actionButton2.editClosed').click(function(){
-    appendQuickButtons();
+    appendQuickButtons(allBtns, allFuncs);
 });
