@@ -5,7 +5,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.1.6
+// @version      1.1.7
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -251,13 +251,13 @@ var allFuncs = {
         setProbability('Low');
         setPriority('Low','Low');
     },
-    ".quickBtn3":function(){
+    ".quickBtn4":function(){
         // console.log('setting priority to "3 - Green"');
         setImpact('Low');
         setProbability('Low');
         setPriority('Low','Low');
     },
-    ".quickBtn4":function(){
+    ".quickBtn5":function(){
         // console.log('setting priority to "2 - Yellow"');
         setImpact('Medium');
         setProbability('Medium');
