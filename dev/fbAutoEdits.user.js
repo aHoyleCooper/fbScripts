@@ -5,7 +5,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.1.4
+// @version      1.1.5
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -157,18 +157,24 @@ var listCss = {
     and add that variable to the allBtns list. Then, add a new entry to the allFuncs JSON dictionary.
     the class name you gave to the <li> should be the key, and the value should be the function you
     want your button to execute on click. */
-var quickBtn1 = '<li class="quickBtn1">Assign to Me</li>';
-var quickBtn2 = '<li class="quickBtn2">Do The Needful</li>';
-var quickBtn3 = '<li class="quickBtn3">Green</li>';
-var quickBtn4 = '<li class="quickBtn4">Yellow</li>';
+var quickBtn1 = '<li class="quickBtn1">Claim</li>';
+var quickBtn2 = '<li class="quickBtn2">Incoming</li>';
+var quickBtn3 = '<li class="quickBtn3">Do The Needful</li>';
+var quickBtn4 = '<li class="quickBtn4">Green</li>';
+var quickBtn5 = '<li class="quickBtn5">Yellow</li>';
 var quickBtnLast = '<li class="quickBtnLast" style="margin-right:5px;">Red</li>';
-var allBtns = [quickBtn1, quickBtn2, quickBtn3, quickBtn4, quickBtnLast];
+var allBtns = [quickBtn1, quickBtn2, quickBtn3, quickBtn4, quickBtn5, quickBtnLast];
 var allFuncs = {
     ".quickBtn1":function(){
         // console.log('assigning ticket to you');
         assignToUser($('#username').text());
     },
     ".quickBtn2":function(){
+        // console.log('assigning ticket to Incoming, setting priority to "7 - Undecided"');
+        assignToUser('Incoming');
+        setPriority('--', '--');
+    },
+    ".quickBtn3":function(){
         // console.log('setting milestone to "Bug Backlog", assignment to "Up For Grabs", and priority to "3 - Green"');
         setMilestone('Bug Backlog');
         assignToUser('Up For Grabs');
