@@ -5,7 +5,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.1.7
+// @version      1.1.8
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -120,8 +120,8 @@ function setProbability(prob) {
 function setMilestone(milestone){
     // console.log("setting milestone to:", milestone);
     $('#idDropList_ixFixFor_oText').val(milestone);
-    $('#ixFixFor').each(function(){
-        if ($(this).text() === milestone) {
+    $('#ixFixFor option').each(function(){
+        if (milestone.indexOf($(this).text()) >= 0) {
             $(this).attr('selected', 'selected');
         } else {
             $(this).removeAttr('selected');
@@ -228,24 +228,24 @@ var btnCss = {
     the class name you gave to the <li> should be the key, and the value should be the function you
     want your button to execute on click.
 */
-var quickBtn1 = '<li class="quickBtn1">Claim</li>';
-var quickBtn2 = '<li class="quickBtn2">Incoming</li>';
-var quickBtn3 = '<li class="quickBtn3">Scrub</li>';
-var quickBtn4 = '<li class="quickBtn4">Green</li>';
-var quickBtn5 = '<li class="quickBtn5">Yellow</li>';
-var quickBtnLast = '<li class="quickBtnLast" style="margin-right:5px;">Red</li>';
-var allBtns = [quickBtn1, quickBtn2, quickBtn3, quickBtn4, quickBtn5, quickBtnLast];
+var claimQuickBtn = '<li class="claimQuickBtn">Claim</li>';
+var incomingQuickBtn = '<li class="incomingQuickBtn">Incoming</li>';
+var scrubQuickBtn = '<li class="scrubQuickBtn">Scrub</li>';
+var greenQuickBtn = '<li class="greenQuickBtn">Green</li>';
+var yellowQuickBtn = '<li class="yellowQuickBtn">Yellow</li>';
+var redQuickBtn = '<li class="redQuickBtn quickBtnLast" style="margin-right:5px;">Red</li>';
+var allBtns = [claimQuickBtn, incomingQuickBtn, scrubQuickBtn, greenQuickBtn, yellowQuickBtn, redQuickBtn];
 var allFuncs = {
-    ".quickBtn1":function(){
+    ".claimQuickBtn":function(){
         // console.log('assigning ticket to you');
         assignToUser($('#username').text());
     },
-    ".quickBtn2":function(){
+    ".incomingQuickBtn":function(){
         // console.log('assigning ticket to Incoming, setting priority to "7 - Undecided"');
         assignToUser('Incoming');
         setPriority('--', '--');
     },
-    ".quickBtn3":function(){
+    ".scrubQuickBtn":function(){
         // console.log('setting milestone to "Bug Backlog", assignment to "Up For Grabs", and priority to "3 - Green"');
         setMilestone('Bug Backlog');
         assignToUser('Up For Grabs');
@@ -253,14 +253,16 @@ var allFuncs = {
         setProbability('Low');
         setPriority('Low','Low');
     },
-    ".quickBtn4":function(){
-        // console.log('setting priority to "3 - Green"');
+    ".greenQuickBtn":function(){
+        // console.log('setting assignment to "Up For Grabs", priority to "3 - Green"');
+        assignToUser('Up For Grabs');
         setImpact('Low');
         setProbability('Low');
         setPriority('Low','Low');
     },
-    ".quickBtn5":function(){
-        // console.log('setting priority to "2 - Yellow"');
+    ".yellowQuickBtn":function(){
+        // console.log('setting assignment to "Up For Grabs", priority to "2 - Yellow"');
+        assignToUser('Up For Grabs');
         setImpact('Medium');
         setProbability('Medium');
         setPriority('Medium','Medium');
