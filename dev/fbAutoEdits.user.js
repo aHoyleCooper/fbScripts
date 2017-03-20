@@ -83,7 +83,6 @@ function setImpact(impact){
     // console.log("setting impact to:", impact);
     $('#idDropList_customerximpactu43_oText').val(impact);
     $('#customerximpactu43 option').each(function(){
-        if ($(this).text() === impact) {
             $(this).attr('selected', 'selected');
         } else {
             $(this).removeAttr('selected');
@@ -102,7 +101,6 @@ function setProbability(prob) {
     // console.log("setting probability to:", prob);
     $('#idDropList_probabilityxofxoccurrencer04_oText').val(prob);
     $('#probabilityxofxoccurrencer04 option').each(function(){
-        if ($(this).text() === prob) {
             $(this).attr('selected', 'selected');
         } else {
             $(this).removeAttr('selected');
@@ -121,7 +119,7 @@ function setMilestone(milestone){
     // console.log("setting milestone to:", milestone);
     $('#idDropList_ixFixFor_oText').val(milestone);
     $('#ixFixFor option').each(function(){
-        if (milestone.indexOf($(this).text()) >= 0) {
+        if ($(this).text().indexOf(milestone) >= 0) {
             $(this).attr('selected', 'selected');
         } else {
             $(this).removeAttr('selected');
@@ -140,7 +138,7 @@ function assignToUser(user) {
     // console.log("assigning ticket to:", user);
     $('#idDropList_ixPersonAssignedTo_oText').val(user);
     $('#ixPersonAssignedTo option').each(function(){
-        if ($(this).text() === " " + user + " ") {
+        if ($(this).text().indexOf(user) >= 0) {
             $(this).attr('selected', 'selected');
         } else {
             $(this).removeAttr('selected');
@@ -223,9 +221,10 @@ var btnCss = {
     "color":"#555",
     "font-size":"13px"
 };
-/*  to add a function, you'll need to create a <li>, give it a class name, assign it to a variable,
-    and add that variable to the allBtns list. Then, add a new entry to the allFuncs JSON dictionary.
-    the class name you gave to the <li> should be the key, and the value should be the function you
+/*  to add a function, you'll need to create a <li>, give it a class name (this injects a row of
+    buttons along the top and bottom borders of the case, so stick to classes please), assign it to a
+    variable, and add that variable to the allBtns list. Then, add a new entry to the allFuncs JSON
+    dictionary. The class name you gave to the <li> should be the key, and the value should be the function you
     want your button to execute on click.
 */
 var claimQuickBtn = '<li class="claimQuickBtn">Claim</li>';
@@ -276,7 +275,7 @@ var allFuncs = {
 };
 
 
-/***************************************** Document Load *****************************************/
+/***************************************** DOM Events *****************************************/
 
 $(document.body).on('wheel', '#idDropList_ixPersonAssignedTo_oDropList', function(e){
     blockScroll(e, $(this));
