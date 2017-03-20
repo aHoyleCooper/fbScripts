@@ -5,7 +5,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.1.8
+// @version      1.1.9
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -83,6 +83,7 @@ function setImpact(impact){
     // console.log("setting impact to:", impact);
     $('#idDropList_customerximpactu43_oText').val(impact);
     $('#customerximpactu43 option').each(function(){
+        if ($(this).text().indexOf(impact) >= 0) {
             $(this).attr('selected', 'selected');
         } else {
             $(this).removeAttr('selected');
@@ -101,6 +102,7 @@ function setProbability(prob) {
     // console.log("setting probability to:", prob);
     $('#idDropList_probabilityxofxoccurrencer04_oText').val(prob);
     $('#probabilityxofxoccurrencer04 option').each(function(){
+        if ($(this).text().indexOf(prob) >= 0) {
             $(this).attr('selected', 'selected');
         } else {
             $(this).removeAttr('selected');
