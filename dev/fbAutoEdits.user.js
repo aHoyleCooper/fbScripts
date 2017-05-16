@@ -5,7 +5,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.1.10
+// @version      1.1.11
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -278,8 +278,8 @@ var allFuncs = {
         setMilestone('Features - Minor');
         setCategory('Feature');
         setImpact('Feature');
-        setProbability('--')
-        setPriority('Feature', '--')
+        setProbability('--');
+        setPriority('Low', 'Low');
     },
     ".greenQuickBtn":function(){
         // console.log('setting assignment to "Up For Grabs", priority to "3 - Green"');
