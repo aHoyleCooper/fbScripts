@@ -254,7 +254,7 @@ var featurizeQuickBtn = '<li class="featurizeQuickBtn">Featurize</li>';
 var greenQuickBtn = '<li class="greenQuickBtn">Green</li>';
 var yellowQuickBtn = '<li class="yellowQuickBtn">Yellow</li>';
 var redQuickBtn = '<li class="redQuickBtn quickBtnLast" style="margin-right:5px;">Red</li>';
-var allBtns = [claimQuickBtn, incomingQuickBtn, scrubQuickBtn, greenQuickBtn, yellowQuickBtn, redQuickBtn];
+var allBtns = [claimQuickBtn, incomingQuickBtn, scrubQuickBtn, featurizeQuickBtn, greenQuickBtn, yellowQuickBtn, redQuickBtn];
 var allFuncs = {
     ".claimQuickBtn":function(){
         // console.log('assigning ticket to you');
