@@ -5,7 +5,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
 // @include      http://10.20.1.37/
-// @version      1.1.9
+// @version      1.1.10
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -148,6 +148,24 @@ function assignToUser(user) {
     });
 }
 
+/*  Function: setCategory
+    Args:
+        category (string) - the string value of the desired category. Legitimate categories include: 'Bug', 'Feature', and 'Refactor'
+    Desc:
+        Sets the value of the 'Category' field to the value of the supplied user argument. Must match a legitimate user account
+*/
+function setCategory(category) {
+    // console.log("setting category to:", category);
+    $('#idDropList_ixCategory_oText').val(category);
+    $('#ixCategory option').each(function(){
+        if ($(this).text().indexOf(category) >= 0) {
+            $(this).attr('selected', 'selected');
+        } else {
+            $(this).removeAttr('selected');
+        }
+    });
+}
+
 /*  Function: setBtnBehavior
     Args:
         className (string) - the string value of the class name for the button your are configuring
@@ -232,6 +250,7 @@ var btnCss = {
 var claimQuickBtn = '<li class="claimQuickBtn">Claim</li>';
 var incomingQuickBtn = '<li class="incomingQuickBtn">Incoming</li>';
 var scrubQuickBtn = '<li class="scrubQuickBtn">Scrub</li>';
+var featurizeQuickBtn = '<li class="featurizeQuickBtn">Featurize</li>';
 var greenQuickBtn = '<li class="greenQuickBtn">Green</li>';
 var yellowQuickBtn = '<li class="yellowQuickBtn">Yellow</li>';
 var redQuickBtn = '<li class="redQuickBtn quickBtnLast" style="margin-right:5px;">Red</li>';
@@ -253,6 +272,14 @@ var allFuncs = {
         setImpact('Low');
         setProbability('Low');
         setPriority('Low','Low');
+    },
+    ".featurizeQuickBtn":function(){
+        // console.log('setting Milestone to "Features - Minor", Category to "Feature", Impact to "Feature", Probability to "--" and Priority to "3 - Green"')
+        setMilestone('Features - Minor');
+        setCategory('Feature');
+        setImpact('Feature');
+        setProbability('--')
+        setPriority('Feature', '--')
     },
     ".greenQuickBtn":function(){
         // console.log('setting assignment to "Up For Grabs", priority to "3 - Green"');
