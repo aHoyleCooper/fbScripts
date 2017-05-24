@@ -5,6 +5,9 @@ FogBugz new ticket template. This will automatically check for updates once per 
 -Automatically fills in suggested fields in the bug description<br>
 -Highlights the most important selections and fields
 
+## Upcoming:
+-TBD (suggestions welcome)
+
 ## Install:
 1. Download Tampermonkey<br>
 -<a href='https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en' target='_blank'>Tampermonkey for Chrome</a><br>
