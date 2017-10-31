@@ -6,7 +6,7 @@
 // @include      http://fogbugz/
 // @include      http://fogbugz.ia.local/
 // @include      http://10.20.1.37/
-// @version      1.0.8
+// @version      1.0.9
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/newFbTicketTemplate.user.js
 // ==/UserScript==
 

@@ -4,8 +4,9 @@
 // @match        http://*/default.asp*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
+// @include      http://fogbugz.ia.local/
 // @include      http://10.20.1.37/
-// @version      1.1.11
+// @version      1.1.12
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
