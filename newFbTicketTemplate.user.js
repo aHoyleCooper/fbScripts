@@ -4,13 +4,14 @@
 // @match        http://*/default.asp?command=new&pg=pgEditBug
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
 // @include      http://fogbugz/
+// @include      http://fogbugz.ia.local/
 // @include      http://10.20.1.37/
-// @version      1.0.7
+// @version      1.0.8
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/newFbTicketTemplate.user.js
 // ==/UserScript==
 
 $(function(){
-    var template = "Description: \n\nVersion: \n\nExpected behavior: \nActual behavior: \n\nSteps to reproduce:\n1. \n2. \n3. \n\nWorkaround:\n\n\nNotify:\n\n\nCreated using the guidelines found here:\nhttps://goo.gl/2kC80F";
+    var template = "Description: \n\nVersion: \n\nExpected behavior: \nActual behavior: \n\nSteps to reproduce:\n1. \n2. \n3. \n\nWorkaround:\n\n\nNotify:\n\n\nCreated using the guidelines found here:\nhttps://confluence.ia.local:8443/display/SUP/Writing+An+Effective+Bug+Report";
     
     if ($('.virtualLink.bold').text() == "Plain text") {
         $('.wideTextareaWrapper textarea').val(template);
