@@ -323,11 +323,13 @@ $(document.body).on('click', '#idDropList_probabilityxofxoccurrencer04_oDropList
     setPriority($(".droplist-text:eq(7)").val(), $(this).text());
 });
 
-$('#edit0').click(function(){
-    appendQuickButtons(allBtns, allFuncs);
+$(document.body).on('load', 'quickbuttonholder', function(){
+    if(window.location.contains("command=new")){
+        appendQuickButtons(allBtns, allFuncs);
+    }
 });
 
-$('#Menu_New').click(function(){
+$('#edit0').click(function(){
     appendQuickButtons(allBtns, allFuncs);
 });
 
