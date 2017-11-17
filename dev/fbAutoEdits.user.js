@@ -268,6 +268,7 @@ var allFuncs = {
     ".featurizeQuickBtn":function(){
         // console.log('setting Milestone to "Features - Minor", Category to "Feature", Impact to "Feature", Probability to "--" and Priority to "3 - Green"')
         setMilestone('Features - Minor');
+        assignToUser('Up For Grabs');
         setCategory('Feature');
         setImpact('Feature');
         setProbability('--');
