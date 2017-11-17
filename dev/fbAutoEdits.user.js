@@ -6,7 +6,7 @@
 // @include      http://fogbugz/
 // @include      http://fogbugz.ia.local/
 // @include      http://10.20.1.37/
-// @version      1.1.12
+// @version      1.1.13
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -324,6 +324,10 @@ $(document.body).on('click', '#idDropList_probabilityxofxoccurrencer04_oDropList
 });
 
 $('#edit0').click(function(){
+    appendQuickButtons(allBtns, allFuncs);
+});
+
+$('#Menu_New').click(function(){
     appendQuickButtons(allBtns, allFuncs);
 });
 
