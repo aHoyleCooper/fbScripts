@@ -250,12 +250,11 @@ var btnCss = {
 */
 var claimQuickBtn = '<li class="claimQuickBtn">Claim</li>';
 var incomingQuickBtn = '<li class="incomingQuickBtn">Incoming</li>';
-var scrubQuickBtn = '<li class="scrubQuickBtn">Scrub</li>';
 var featurizeQuickBtn = '<li class="featurizeQuickBtn">Featurize</li>';
 var greenQuickBtn = '<li class="greenQuickBtn">Green</li>';
 var yellowQuickBtn = '<li class="yellowQuickBtn">Yellow</li>';
-var redQuickBtn = '<li class="redQuickBtn quickBtnLast" style="margin-right:5px;">Red</li>';
-var allBtns = [claimQuickBtn, incomingQuickBtn, scrubQuickBtn, featurizeQuickBtn, greenQuickBtn, yellowQuickBtn, redQuickBtn];
+var redQuickBtn = '<li class="redQuickBtn" style="margin-right:5px;">Red</li>';
+var allBtns = [claimQuickBtn, incomingQuickBtn, featurizeQuickBtn, greenQuickBtn, yellowQuickBtn, redQuickBtn];
 var allFuncs = {
     ".claimQuickBtn":function(){
         // console.log('assigning ticket to you');
@@ -265,14 +264,6 @@ var allFuncs = {
         // console.log('assigning ticket to Incoming, setting priority to "7 - Undecided"');
         assignToUser('Incoming');
         setPriority('--', '--');
-    },
-    ".scrubQuickBtn":function(){
-        // console.log('setting milestone to "Bug Backlog", assignment to "Up For Grabs", and priority to "3 - Green"');
-        setMilestone('Bug Backlog');
-        assignToUser('Up For Grabs');
-        setImpact('Low');
-        setProbability('Low');
-        setPriority('Low','Low');
     },
     ".featurizeQuickBtn":function(){
         // console.log('setting Milestone to "Features - Minor", Category to "Feature", Impact to "Feature", Probability to "--" and Priority to "3 - Green"')
@@ -284,6 +275,7 @@ var allFuncs = {
     },
     ".greenQuickBtn":function(){
         // console.log('setting assignment to "Up For Grabs", priority to "3 - Green"');
+        setMilestone('Bug Backlog');
         assignToUser('Up For Grabs');
         setImpact('Low');
         setProbability('Low');
@@ -291,13 +283,16 @@ var allFuncs = {
     },
     ".yellowQuickBtn":function(){
         // console.log('setting assignment to "Up For Grabs", priority to "2 - Yellow"');
+        setMilestone('Bug Backlog');
         assignToUser('Up For Grabs');
         setImpact('Medium');
         setProbability('Medium');
         setPriority('Medium','Medium');
     },
-    ".quickBtnLast":function(){
+    ".redQuickBtn":function(){
         // console.log('setting priority to "1 - Red"');
+        setMilestone('Bug Backlog');
+        assignToUser('Up For Grabs');
         setImpact('High');
         setProbability('High');
         setPriority('High','High');
