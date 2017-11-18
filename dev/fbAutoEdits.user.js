@@ -6,7 +6,7 @@
 // @include      http://fogbugz/
 // @include      http://fogbugz.ia.local/
 // @include      http://10.20.1.37/
-// @version      1.1.12
+// @version      1.1.14
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -200,13 +200,17 @@ function setBtnBehavior(className, func) {
         This function iterates through the btnList variable, uses setBtnBehavior() in combination with the allFuncs
         dictionary to set the behavior of each quick button, then finally inject the buttons into the FogBugz case header.
 */
-function appendQuickButtons(btnList, funcList){
+function appendQuickButtons(btnList, funcList, newPage){
     var listCss = {
         "display":"flex",
         "align-items":"center",
         "justify-content":"flex-end",
-        "margin-top":"-15px"
     };
+    if(newPage){
+        listCss["min-height"] = "32px";
+    } else {
+        listCss["margin-top"] = "-15px";
+    }
     $('.toolbar.nextprev').css({"float":"none"});
     $('.toolbar.buttons').css(listCss);
     $('.toolbar.buttons').html(btnList.join('<p style="margin:0 5px;">|</p>'));
@@ -323,18 +327,25 @@ $(document.body).on('click', '#idDropList_probabilityxofxoccurrencer04_oDropList
     setPriority($(".droplist-text:eq(7)").val(), $(this).text());
 });
 
+$(document.body).ready(function(){
+    //console.log("document body ready " + window.location.href);
+    if(window.location.href.indexOf("command=new")>-1){
+        appendQuickButtons(allBtns, allFuncs, true);
+    }
+});
+
 $('#edit0').click(function(){
-    appendQuickButtons(allBtns, allFuncs);
+    appendQuickButtons(allBtns, allFuncs, false);
 });
 
 $('.actionButton2.edit').click(function(){
-    appendQuickButtons(allBtns, allFuncs);
+    appendQuickButtons(allBtns, allFuncs, false);
 });
 
 $('.actionButton2.reopen').click(function(){
-    appendQuickButtons(allBtns, allFuncs);
+    appendQuickButtons(allBtns, allFuncs, false);
 });
 
 $('.actionButton2.editClosed').click(function(){
-    appendQuickButtons(allBtns, allFuncs);
+    appendQuickButtons(allBtns, allFuncs, false);
 });
