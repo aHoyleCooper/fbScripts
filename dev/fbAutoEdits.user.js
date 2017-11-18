@@ -328,7 +328,7 @@ $(document.body).on('click', '#idDropList_probabilityxofxoccurrencer04_oDropList
 });
 
 $(document.body).ready(function(){
-    console.log("document body ready " + window.location.href);
+    //console.log("document body ready " + window.location.href);
     if(window.location.href.indexOf("command=new")>-1){
         appendQuickButtons(allBtns, allFuncs, true);
     }
