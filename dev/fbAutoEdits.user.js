@@ -122,7 +122,7 @@ function setMilestone(milestone){
     // console.log("setting milestone to:", milestone);
     $('#ixFixFor option').each(function(){
         if ($(this).text().indexOf(milestone) >= 0) {
-            $('#idDropList_ixFixFor_oText').val(milestone);
+            $('#idDropList_ixFixFor_oText').val($(this).text());
             $(this).attr('selected', 'selected');
         } else {
             $(this).removeAttr('selected');
@@ -141,7 +141,7 @@ function assignToUser(user) {
     // console.log("assigning ticket to:", user);
     $('#ixPersonAssignedTo option').each(function(){
         if ($(this).text().indexOf(user) >= 0) {
-            $('#idDropList_ixPersonAssignedTo_oText').val(user);
+            $('#idDropList_ixPersonAssignedTo_oText').val($(this).text());
             $(this).attr('selected', 'selected');
         } else {
             $(this).removeAttr('selected');
