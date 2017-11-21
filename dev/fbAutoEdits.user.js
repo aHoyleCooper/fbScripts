@@ -6,7 +6,7 @@
 // @include      http://fogbugz/
 // @include      http://fogbugz.ia.local/
 // @include      http://10.20.1.37/
-// @version      1.1.14
+// @version      1.1.15
 // @updateURL    https://github.com/aHoyleCooper/fbScripts/raw/master/dev/fbAutoEdits.user.js
 // ==/UserScript==
 
@@ -120,9 +120,9 @@ function setProbability(prob) {
 */
 function setMilestone(milestone){
     // console.log("setting milestone to:", milestone);
-    $('#idDropList_ixFixFor_oText').val(milestone);
     $('#ixFixFor option').each(function(){
         if ($(this).text().indexOf(milestone) >= 0) {
+            $('#idDropList_ixFixFor_oText').val($(this).text());
             $(this).attr('selected', 'selected');
         } else {
             $(this).removeAttr('selected');
@@ -139,9 +139,9 @@ function setMilestone(milestone){
 */
 function assignToUser(user) {
     // console.log("assigning ticket to:", user);
-    $('#idDropList_ixPersonAssignedTo_oText').val(user);
     $('#ixPersonAssignedTo option').each(function(){
         if ($(this).text().indexOf(user) >= 0) {
+            $('#idDropList_ixPersonAssignedTo_oText').val($(this).text());
             $(this).attr('selected', 'selected');
         } else {
             $(this).removeAttr('selected');
